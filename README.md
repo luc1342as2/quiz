@@ -1,2 +1,3 @@
-# quiz
 Quiz about Italy
+Quiz Game in HTML, CSS, and JavaScript
+This project is an interactive Quiz game built with HTML, CSS, and JavaScript, offering a fun and educational experience across a range of topics. It features a clean, responsive user interface, with multiple-choice questions that allow users to test their knowledge and receive immediate feedback. The game logic is implemented with JavaScript, managing question display, answer validation, and score tracking, while HTML and CSS provide an engaging and accessible layout. This project demonstrates proficiency in web development and front-end design, emphasizing interactivity and user engagement.
