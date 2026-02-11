@@ -10,10 +10,10 @@ const quizData = [
 
     {
         question : 'What colours can you find on the Italian flag?',
-        a: "Red,White,Green",
-        b: "Blue,Yellow,Red",
-        c: "Red,White,Black",
-        d: "Green,Yellow,Black",
+        a: "Red, White, Green",
+        b: "Blue, Yellow, Red",
+        c: "Red, White, Black",
+        d: "Green, Yellow, Black",
         correct: "a",
     },
 
@@ -180,9 +180,9 @@ const quizData = [
     }
 ]
 
-
-
 const quiz = document.getElementById('quiz')
+const quizMain = document.querySelector('.quiz-main')
+const quizResults = document.getElementById('quizResults')
 const answerEls = document.querySelectorAll('.answer')
 const questionEl = document.getElementById('question')
 const a_text = document.getElementById('a_text')
@@ -190,6 +190,8 @@ const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
 const submitBtn = document.getElementById('submit')
+const progressFill = document.getElementById('progressFill')
+const progressText = document.getElementById('progressText')
 
 let currentQuiz = 0
 let score = 0
@@ -206,6 +208,14 @@ function loadQuiz() {
     b_text.innerText = currentQuizData.b
     c_text.innerText = currentQuizData.c
     d_text.innerText = currentQuizData.d
+
+    updateProgress()
+}
+
+function updateProgress() {
+    const percent = ((currentQuiz + 1) / quizData.length) * 100
+    progressFill.style.width = `${percent}%`
+    progressText.textContent = `Question ${currentQuiz + 1} of ${quizData.length}`
 }
 
 function deselectAnswers() {
@@ -224,6 +234,14 @@ function getSelected() {
     return answer
 }
 
+function getMessage(score, total) {
+    const percent = Math.round((score / total) * 100)
+    if (percent >= 90) return "Bellissimo! You really know Italy!"
+    if (percent >= 75) return "Molto bene! Great Italian knowledge."
+    if (percent >= 50) return "Non male! Keep exploring la bella Italia."
+    return "Keep learning — Italy has so much to discover!"
+}
+
 submitBtn.addEventListener('click', () => {
     const answer = getSelected()
 
@@ -237,11 +255,14 @@ submitBtn.addEventListener('click', () => {
         if(currentQuiz < quizData.length) {
             loadQuiz()
         } else {
-            quiz.innerHTML = `
-                <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-
-                <button onclick="location.reload()">Reload</button>
-            `
+            quizResults.querySelector('#resultsScore').textContent = `${score} / ${quizData.length}`
+            quizResults.querySelector('#resultsMessage').textContent = getMessage(score, quizData.length)
+            quizMain.classList.add('results-mode')
+            quizResults.classList.add('visible')
         }
     }
+})
+
+document.getElementById('reloadBtn').addEventListener('click', () => {
+    location.reload()
 })
