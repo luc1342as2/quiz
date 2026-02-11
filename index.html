@@ -3,40 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <title>Quiz on Italy </title>
+    <title>Quiz on Italy</title>
   </head>
   <body>
-    <div class="quiz-container" id="quiz">
-      <div class="quiz-header">
-        <h2 id="question">Question text</h2>
-        <ul>
-          <li>
-            <input type="radio" name="answer" id="a" class="answer">
-            <label for="a" id="a_text">Question</label>
-          </li>
+    <div class="page-wrapper">
+      <header class="quiz-header-brand">
+        <div class="header-content">
+          <span class="quiz-badge">Geography & Culture</span>
+          <h1>Quiz on Italy</h1>
+          <p>Test your knowledge about la bella Italia</p>
+        </div>
+      </header>
 
-          <li>
-            <input type="radio" name="answer" id="b" class="answer">
-            <label for="b" id="b_text">Question</label>
-          </li>
+      <main class="quiz-main">
+        <div class="quiz-container" id="quiz">
+          <div class="quiz-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">Question 1 of 20</span>
+          </div>
 
-          <li>
-            <input type="radio" name="answer" id="c" class="answer">
-            <label for="c" id="c_text">Question</label>
-          </li>
+          <div class="quiz-content">
+            <h2 class="question" id="question">Question text</h2>
+            <ul class="answer-list" role="radiogroup" aria-label="Answer options">
+              <li>
+                <input type="radio" name="answer" id="a" class="answer" value="a" />
+                <label for="a" class="answer-option" id="a_label">
+                  <span class="answer-letter">A</span>
+                  <span class="answer-text" id="a_text">Answer A</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="answer" id="b" class="answer" value="b" />
+                <label for="b" class="answer-option" id="b_label">
+                  <span class="answer-letter">B</span>
+                  <span class="answer-text" id="b_text">Answer B</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="answer" id="c" class="answer" value="c" />
+                <label for="c" class="answer-option" id="c_label">
+                  <span class="answer-letter">C</span>
+                  <span class="answer-text" id="c_text">Answer C</span>
+                </label>
+              </li>
+              <li>
+                <input type="radio" name="answer" id="d" class="answer" value="d" />
+                <label for="d" class="answer-option" id="d_label">
+                  <span class="answer-letter">D</span>
+                  <span class="answer-text" id="d_text">Answer D</span>
+                </label>
+              </li>
+            </ul>
+          </div>
 
-          <li>
-            <input type="radio" name="answer" id="d" class="answer">
-            <label for="d" id="d_text">Question</label>
-          </li>
-        </ul>
-      </div>
-      <button id="submit">Submit</button>
+          <div class="quiz-actions">
+            <button type="button" id="submit" class="btn-submit">
+              <span class="btn-text">Submit Answer</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="quiz-results" id="quizResults" aria-hidden="true">
+          <div class="results-content">
+            <div class="results-score" id="resultsScore"></div>
+            <p class="results-message" id="resultsMessage"></p>
+            <button type="button" id="reloadBtn" class="btn-reload">Try Again</button>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; 2022 Lucas Ghigli. All rights reserved.</p>
+      </footer>
     </div>
     <script src="script.js"></script>
   </body>
-  <footer>
-    <p>&copy; 2022 Lucas Ghigli. All rights reserved.</p>
-  </footer>
 </html>
+
+
